@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nicolas Bitar's Webpage</title>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="shortcut icon" href="https://www.lri.fr/~bittar/lobster.png" type="image/x-icon">
+  	<link rel="icon" href="https://www.lri.fr/~bittar/lobster.png" type="image/x-icon">
+  	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body>
+	<header>
+		<br>
+	</header>
+	<nav>
+        <h2>Nicolas Bitar</h2>
+        <h5>LISN, Université Paris-Saclay</h5>
+    <h6>nicolas.bitar (at) upsaclay.fr</h6>
+    <br>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="research.html">Research</a></li>
+			<li ><a href="talks.html">Talks & Conferences</a></li>
+			<li><a href="teaching.html">Teaching</a></li>
+			<li class="current"><a href="misc.html">Miscellaneous</a></li>
+		</ul>
+	</nav>
+	<main>
+
+
+    <h3>Co-authors</h3>
+    <ol>
+      <li><a href="http://www.lri.fr/~aubrun">Nathalie Aubrun</a>
+      <li><a href="https://sites.google.com/view/amaass/home">Alejando Maass</a>
+      <li><a href="https://sites.google.com/site/sebastiandonosofuentes/">Sebastián Donoso</a>
+      <li><a href="https://sites.google.com/view/pedro-montealegre/home">Pedro Montealegre</a>
+      <li><a href="https://ingenieria.uai.cl/profesor/eric-goles/">Eric Goles</a>
+    </ol>
+
+<h3>Useful Links</h3>
+
+<ol>
+      <li><a href="https://www.jgibson.id.au/lievis/affine_weyl/#.-">Affine Weyl group viewer</a>,
+      <li> A tool to find Latex commands for symbols: <a href="https://detexify.kirelabs.org/classify.html">Detexify</a>,
+      <li> Obtain bibtex from DOI <a href="https://www.doi2bib.org/">doi2bib</a>,
+      <li> Very useful grammar guide for mathematics: <a href="https://dwest.web.illinois.edu/grammar.html">The Grammar According to West</a>.
+</ol>
+
+<!-- 
+	<h3>
+    	Talks
+  </h3>
+        <ol >
+            <li><b class="art">The Domino Snake Problem</b> [<a href="http://www.lri.fr/~bittar/snakedomino.pdf" class="pdf">Slides</a>], <small>Journées de l'ANR C_SyDySi (Orléans) et Séminaire GALaC (LISN, Gif-sur-Yvette)</small><br> <button class="collapsible">Abstract</button>
+            <div class="content">
+                Deep within the swamp of undecidability lies the elusive domino snake. This species, first discovered in the 1970s by Myers, was originally introduced as an a priori simpler problem than the now celebrated Domino Problem. In this talk we will take a tour through what is known about this species, looking at its different variants: the infinite snake problem, the snake rechability problem and the ouroboros problem. We will also see how the infinite snake problem can be reduced to a problem in one-dimensional symbolic dynamics.
+            </div></li>
+
+            <li><b class="art">Symbolic Dynamics on Groups: Emptiness and Aperiodicity</b>, <small>Séminaire Doctorante LAMFA (Amiens) et Séminaire DGeCo (IMJ-PRG Paris)</small><br> <button class="collapsible">Abstract</button>
+            <div class="content">
+                Tilings of the plane or infinite grid have been a rich field of study for many years. Through tiling with local rules, it is even possible to create aperiodicity and embed computation in the plane. But what happens when we begin changing the underlying structure? We will explore how different underlying groups and their geometries influence what we can obtain through the use of local rules and take a look at the state of the art of the problems of emptiness and aperiodicity.
+            </div></li>
+
+            <li><b class="art">Strongly Aperiodic SFTs on Generalized Bausmlag-Solitar groups</b> [<a href="http://www.lri.fr/~bittar/GBS.pdf" class="pdf">Slides</a>], <small>Séminaire SymPA (LAMFA, Amiens)</small><br> <button class="collapsible">Abstract</button>
+            <div class="content">
+                We look at constructions of aperiodic SFTs on generalized Baumslag-Solitar (GBS) groups, a well-studied class of groups that includes Baumslag-Solitar groups and Torus Knot groups. Our proof is based on a structural theorem by Whyte and two constructions of strongly aperiodic SFTs on \(\mathbb{F}_n\times\mathbb{Z}\) and \(BS(m,n)\) of our own. These constructions rely on a path-folding technique that lifts an SFT on \(\mathbb{Z}^2\) inside an SFT on \(\mathbb{F}_n\times\mathbb{Z}\) and an SFT on the hyperbolic plane inside an SFT on \(BS(m,n)\). In the former case, the pah folding technique also preserves minimality. Joint work with Nathalie Aubrun and Sacha Huriot.
+            </div></li>
+        </ol> -->
+<br>   
+ 
+</main>
+    
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+</body> 

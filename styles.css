@@ -1,0 +1,170 @@
+body {
+	background-color: #E6F2FF; /* pale blue */
+	color: #003399; /* dark blue */
+	margin: 0; /* remove default margin */
+	padding: 0; /* remove default padding */
+	font-family: 'EB Garamond'; font-size: 13pt;
+}
+
+h1 {
+	color: #003399; /* dark blue */
+	margin-top: 0; /* remove default margin */
+	padding-top: 20px; /* add padding to separate from sidebar */
+	text-align: center;
+}
+
+h2 {
+	color: #0052CC; 
+}
+
+h3 {
+	color: #0052CC; 
+}
+
+h4 {
+	color: #0052CC; 
+}
+
+p {
+	color: black;
+}
+
+nav {
+	background-color: #B3D9FF; /*  light blue */
+	color: #0052CC;
+	padding: 20px;
+	width: 230px;
+	float:left;
+	position: fixed; /* fix the position of the sidebar */
+	top: 0; /* position at top of viewport */
+	bottom: 0; /* stretch to bottom of viewport */
+	overflow-y: auto; 
+}
+
+nav h2 {
+	margin-top: 10px;
+	margin-bottom: 0;
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+nav h5 {
+	margin-top: 10px;
+	margin-bottom: 0;
+	text-align: center;
+	font-weight: bold;
+}
+nav h6 {
+	margin-top: 10px;
+	margin-bottom: 0;
+	text-align: center;
+	font-weight: bold;
+}
+nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-top: 20px;
+}
+		nav ul li {
+	margin-bottom: 10px;
+}
+nav ul li a {
+	color: #003399; /* dark blue */
+	text-decoration: none;
+	display: block;
+	padding: 10px;
+	border-radius: 10px;
+	transition: background-color 0.3s ease; /* add smooth transition effect */
+}
+nav ul li a:hover {
+	background-color: #80BFFF; /* darker blue */
+}
+nav ul li.current a {
+	background-color: #0052CC; /* even darker blue */
+	color: #FFFFFF; /* white */
+}
+main {
+	float:left;
+	margin-left: 290px; 
+	padding: 20px;
+	overflow-y: auto; /* enable scrolling if content overflows */
+	width:50%;
+}
+
+.pict {
+	float:left;
+	width:25%; /*allow for the width of the sidebar */
+	padding: 20px;
+	overflow-y: auto; /* enable scrolling if content overflows */
+}
+
+.foto {
+	max-width: 50%;
+   height: auto;
+   margin-top: 50px;
+
+}
+
+
+.collapsible {
+  cursor: pointer;
+  background-color: #E6F2FF; /* pale blue */
+  border: none;
+  text-align: left;
+  outline: none;
+  font-family: 'EB Garamond'; font-size: 11pt;
+}
+
+.collapsible:after {
+  content: '\25B6';
+  float: left;
+  margin-right: 5px;
+}
+
+.active:after {
+  content: "\25BC";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  font-family: 'EB Garamond'; font-size: 11pt;
+}
+
+ol{
+   list-style-type: circle;
+   color: black; 
+}
+
+.art {
+   color: #0052CC;
+   margin: 0;
+   padding: 0;
+   font-weight: bold;
+}
+
+.pdf {
+   display: inline-block;
+   color: red;
+   text-align: center;
+   padding: 0;
+   text-decoration: none;
+}
+
+.dla {
+   width: auto;
+   height: 500px;
+   margin-left: 0px;
+   margin-top:50px;
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/ebgaramond/v26/SlGDmQSNjdsmc35JDF1K5E55YMjF_7DPuGi-6_RkCY9_S6w.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
