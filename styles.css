@@ -154,11 +154,10 @@ ol{
    text-decoration: none;
 }
 
-.dla {
-   width: auto;
-   height: 500px;
-   margin-left: 0px;
-   margin-top:50px;
+.foto {
+	max-width: 50%;
+   height: auto;
+   margin-top: 100px;
 }
 
 @font-face {
