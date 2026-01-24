@@ -154,6 +154,13 @@ ol{
    text-decoration: none;
 }
 
+.pict2 {
+	float:left;
+	width: 50%; /*allow for the width of the sidebar */
+	padding: 20px;
+	overflow-y: auto; /* enable scrolling if content overflows */
+}
+
 .foto2 {
 	max-width: 50%;
    height: auto;
