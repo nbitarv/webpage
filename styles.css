@@ -156,7 +156,7 @@ ol{
 
 .pict2 {
 	float:left;
-	width: 30%; /*allow for the width of the sidebar */
+	width: 35%; /*allow for the width of the sidebar */
 	padding: 20px;
 	overflow-y: auto; /* enable scrolling if content overflows */
 }
@@ -164,7 +164,7 @@ ol{
 .foto2 {
 	max-width: 50%;
    height: auto;
-   margin-top: 100px;
+   margin-top: 130px;
 }
 
 @font-face {
