@@ -156,7 +156,7 @@ ol{
 
 .pict2 {
 	float:left;
-	width: 50%; /*allow for the width of the sidebar */
+	width: 30%; /*allow for the width of the sidebar */
 	padding: 20px;
 	overflow-y: auto; /* enable scrolling if content overflows */
 }
