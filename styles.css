@@ -1,14 +1,8 @@
 /* ==========================================================================
    Nicolás Bitar — academic webpage stylesheet
-   Same look as the original site (pale blue / light blue / dark blue,
-   EB Garamond, fixed sidebar) but rebuilt to be valid, responsive and
-   easier to maintain.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Design tokens
-   All colors and shared values live here. To re-theme the whole site,
-   change these variables only.
    -------------------------------------------------------------------------- */
 :root {
   --color-bg:          #E6F2FF; /* pale blue  — page background            */
@@ -21,7 +15,9 @@
   --color-pdf:         #C00000; /* red for [pdf] links (slightly darker
                                    than pure red for better contrast)      */
 
-  --font-body: "EB Garamond", Garamond, Georgia, "Times New Roman", serif;
+  /* Same declaration as the original site (the matching @font-face rule
+     is at the bottom of this file, copied verbatim from the old CSS) */
+  --font-body: 'EB Garamond';
   --font-size-body: 13pt;
   --font-size-small: 11pt;
 
@@ -64,7 +60,10 @@ body {
    -------------------------------------------------------------------------- */
 body {
   display: grid;
-  grid-template-columns: var(--sidebar-width) minmax(0, 1fr) minmax(200px, 320px);
+  /* Third column = photo. It scales with the window: never narrower than
+     240px, never wider than 30% of the viewport. Adjust these two values
+     to make the photo column bigger or smaller. */
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr) minmax(240px, 30vw);
   align-items: start;
 }
 
@@ -200,9 +199,9 @@ small { font-size: 0.8em; }
 .foto,
 .foto2 {
   display: block;
-  max-width: 200px;
-  width: 100%;
-  height: auto;
+  width: 100%;      /* fills the photo column, so it grows and shrinks */
+  max-width: 480px; /* but never blows up beyond this on huge screens  */
+  height: auto;     /* keeps the aspect ratio                          */
   border-radius: 3%;
 }
 
@@ -344,7 +343,7 @@ details.abstract > p {
   .foto,
   .foto2 {
     margin: 0 auto;
-    max-width: 180px;
+    width: min(80%, 360px); /* scales with the phone screen */
   }
 }
 
@@ -356,4 +355,20 @@ details.abstract > p {
   nav, .skip-link { display: none; }
   main { max-width: 100%; padding: 0; }
   a { color: #000; text-decoration: underline; }
+}
+
+/* --------------------------------------------------------------------------
+   11. Font declaration — copied verbatim from the original styles.css so
+   the site renders with exactly the same font as before.
+   Note: this rule's unicode-range only covers Cyrillic characters, so for
+   Latin text the browser uses its default font, just like on the old site.
+   If you ever want the "real" EB Garamond everywhere, replace this block
+   with the Google Fonts <link> tags (see CHANGES.md).
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/ebgaramond/v26/SlGDmQSNjdsmc35JDF1K5E55YMjF_7DPuGi-6_RkCY9_S6w.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
