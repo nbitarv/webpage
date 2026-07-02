@@ -1,176 +1,359 @@
+/* ==========================================================================
+   Nicolás Bitar — academic webpage stylesheet
+   Same look as the original site (pale blue / light blue / dark blue,
+   EB Garamond, fixed sidebar) but rebuilt to be valid, responsive and
+   easier to maintain.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design tokens
+   All colors and shared values live here. To re-theme the whole site,
+   change these variables only.
+   -------------------------------------------------------------------------- */
+:root {
+  --color-bg:          #E6F2FF; /* pale blue  — page background            */
+  --color-sidebar:     #B3D9FF; /* light blue — sidebar background         */
+  --color-primary:     #003399; /* dark blue  — main text accents, links   */
+  --color-accent:      #0052CC; /* medium blue — headings, current nav item */
+  --color-hover:       #80BFFF; /* hover blue — nav link hover             */
+  --color-text:        #000000; /* body text                               */
+  --color-on-accent:   #FFFFFF; /* text on dark-blue backgrounds           */
+  --color-pdf:         #C00000; /* red for [pdf] links (slightly darker
+                                   than pure red for better contrast)      */
+
+  --font-body: "EB Garamond", Garamond, Georgia, "Times New Roman", serif;
+  --font-size-body: 13pt;
+  --font-size-small: 11pt;
+
+  --sidebar-width: 270px;   /* 230px + 2×20px padding in the old layout */
+  --content-max-width: 46rem;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset / base
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
 body {
-	background-color: #E6F2FF; /* pale blue */
-	color: #003399; /* dark blue */
-	margin: 0; /* remove default margin */
-	padding: 0; /* remove default padding */
-	font-family: 'EB Garamond'; font-size: 13pt;
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: 1.5;
 }
 
-h1 {
-	color: #003399; /* dark blue */
-	margin-top: 0; /* remove default margin */
-	padding-top: 20px; /* add padding to separate from sidebar */
-	text-align: center;
+/* --------------------------------------------------------------------------
+   3. Page layout
+   Three columns on wide screens:  [ sidebar | main content | photo ]
+   The <body> itself is the grid container so that pages keep the same
+   top-level structure as before (nav, main, .pict directly under body).
+   -------------------------------------------------------------------------- */
+body {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr) minmax(200px, 320px);
+  align-items: start;
 }
 
-h2 {
-	color: #0052CC; 
-}
+header { display: none; } /* kept only so old pages with an empty <header> render fine */
 
-h3 {
-	color: #0052CC; 
-}
-
-h4 {
-	color: #0052CC; 
-}
-
-p {
-	color: black;
-}
-
+/* --------------------------------------------------------------------------
+   4. Sidebar navigation
+   -------------------------------------------------------------------------- */
 nav {
-	background-color: #B3D9FF; /*  light blue */
-	color: #0052CC;
-	padding: 20px;
-	width: 230px;
-	float:left;
-	position: fixed; /* fix the position of the sidebar */
-	top: 0; /* position at top of viewport */
-	bottom: 0; /* stretch to bottom of viewport */
-	overflow-y: auto; 
+  grid-column: 1;
+  position: sticky;      /* stays visible while the content scrolls */
+  top: 0;
+  height: 100vh;
+  height: 100dvh;        /* better behaviour on mobile browsers */
+  overflow-y: auto;
+  padding: 20px;
+  background-color: var(--color-sidebar);
+  color: var(--color-accent);
 }
 
+/* Name, affiliation and e-mail in the sidebar.
+   The new pages use classes; the element selectors keep old pages working. */
+.site-name,
 nav h2 {
-	margin-top: 10px;
-	margin-bottom: 0;
-	text-align: center;
-	font-size: 1.2em;
-	font-weight: bold;
+  margin: 10px 0 0;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--color-accent);
 }
+
+.site-affiliation,
 nav h5 {
-	margin-top: 10px;
-	margin-bottom: 0;
-	text-align: center;
-	font-weight: bold;
+  margin: 10px 0 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.85em;
 }
+
+.site-email,
 nav h6 {
-	margin-top: 10px;
-	margin-bottom: 0;
-	text-align: center;
-	font-weight: bold;
+  margin: 10px 0 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.75em;
+  overflow-wrap: anywhere; /* long e-mail never overflows the sidebar */
 }
+
 nav ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	margin-top: 20px;
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
 }
-		nav ul li {
-	margin-bottom: 10px;
+
+nav ul li {
+  margin-bottom: 10px;
 }
+
 nav ul li a {
-	color: #003399; /* dark blue */
-	text-decoration: none;
-	display: block;
-	padding: 10px;
-	border-radius: 10px;
-	transition: background-color 0.3s ease; /* add smooth transition effect */
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
-nav ul li a:hover {
-	background-color: #80BFFF; /* darker blue */
+
+nav ul li a:hover,
+nav ul li a:focus-visible {
+  background-color: var(--color-hover);
 }
+
+/* Current page: works with either aria-current="page" (new)
+   or class="current" on the <li> (old pages). */
+nav ul li a[aria-current="page"],
 nav ul li.current a {
-	background-color: #0052CC; /* even darker blue */
-	color: #FFFFFF; /* white */
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
 }
+
+/* --------------------------------------------------------------------------
+   5. Main content column
+   -------------------------------------------------------------------------- */
 main {
-	float:left;
-	margin-left: 290px; 
-	padding: 20px;
-	overflow-y: auto; /* enable scrolling if content overflows */
-	width:50%;
+  grid-column: 2;
+  padding: 40px 32px 32px;
+  max-width: var(--content-max-width);
 }
 
-.pict {
-	float:left;
-	width:25%; /*allow for the width of the sidebar */
-	padding: 20px;
-	overflow-y: auto; /* enable scrolling if content overflows */
+h1, h2, h3, h4 {
+  color: var(--color-accent);
+  line-height: 1.25;
 }
 
-.foto {
-	max-width: 50%;
-   height: auto;
-   margin-top: 50px;
+main h1 { color: var(--color-primary); }
 
+p { color: var(--color-text); }
+
+a {
+  color: var(--color-primary);
 }
 
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
 
+/* Numbered research-line list: circles, like the original */
+ol {
+  list-style-type: circle;
+  color: var(--color-text);
+  padding-left: 1.4em;
+}
+
+ol > li { margin-bottom: 0.75em; }
+
+ol h4, ul h4 { margin: 0.5em 0 0.25em; }
+
+/* Small text, e.g. "(last update ...)" */
+small { font-size: 0.8em; }
+
+/* --------------------------------------------------------------------------
+   6. Photo column
+   .pict / .foto  — used on the home page
+   .pict2 / .foto2 — variant used on other pages (photo pushed lower)
+   -------------------------------------------------------------------------- */
+.pict,
+.pict2 {
+  grid-column: 3;
+  padding: 20px;
+}
+
+.foto,
+.foto2 {
+  display: block;
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  border-radius: 3%;
+}
+
+.foto  { margin-top: 50px; }
+.foto2 { margin-top: 150px; }
+
+/* --------------------------------------------------------------------------
+   7. Publications / collapsible abstracts (used on research.html, etc.)
+   Two options are supported:
+
+   a) The NEW way — native <details>/<summary>, no JavaScript needed:
+        <details class="abstract">
+          <summary>Abstract</summary>
+          <p>…</p>
+        </details>
+
+   b) The OLD way — button.collapsible + div.content with the small
+      JavaScript toggle. Kept here so existing pages don't break.
+   -------------------------------------------------------------------------- */
+.art {
+  margin: 0;
+  padding: 0;
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+.pdf {
+  display: inline-block;
+  padding: 0;
+  color: var(--color-pdf);
+  text-align: center;
+  text-decoration: none;
+}
+
+.pdf:hover,
+.pdf:focus-visible {
+  text-decoration: underline;
+}
+
+/* (a) native collapsible */
+details.abstract {
+  font-size: var(--font-size-small);
+  margin: 0.25em 0 0.75em;
+}
+
+details.abstract summary {
+  cursor: pointer;
+  color: var(--color-primary);
+}
+
+details.abstract > p {
+  margin: 0.4em 0 0;
+  padding-left: 18px;
+}
+
+/* (b) legacy collapsible (old markup + JS keeps working) */
 .collapsible {
   cursor: pointer;
-  background-color: #E6F2FF; /* pale blue */
+  background-color: var(--color-bg);
   border: none;
   text-align: left;
   outline: none;
-  font-family: 'EB Garamond'; font-size: 11pt;
+  font-family: var(--font-body);
+  font-size: var(--font-size-small);
 }
 
-.collapsible:after {
+.collapsible::after {
   content: '\25B6';
   float: left;
   margin-right: 5px;
 }
 
-.active:after {
-  content: "\25BC";
+.collapsible.active::after {
+  content: '\25BC';
 }
 
 .content {
-  padding: 0 18px;
   max-height: 0;
   overflow: hidden;
+  padding: 0 18px;
   transition: max-height 0.2s ease-out;
-  font-family: 'EB Garamond'; font-size: 11pt;
+  font-family: var(--font-body);
+  font-size: var(--font-size-small);
 }
 
-ol{
-   list-style-type: circle;
-   color: black; 
+/* --------------------------------------------------------------------------
+   8. Accessibility helpers
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 10;
+  padding: 8px 12px;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
-.art {
-   color: #0052CC;
-   margin: 0;
-   padding: 0;
-   font-weight: bold;
+.skip-link:focus {
+  left: 8px;
+  top: 8px;
 }
 
-.pdf {
-   display: inline-block;
-   color: red;
-   text-align: center;
-   padding: 0;
-   text-decoration: none;
+/* --------------------------------------------------------------------------
+   9. Responsive behaviour
+   Below 900px the page becomes a single column:
+   sidebar on top (no longer sticky), then content, then photo.
+   The original site simply overflowed on phones.
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  body {
+    display: block;
+  }
+
+  nav {
+    position: static;
+    height: auto;
+    width: 100%;
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  nav ul li { margin-bottom: 0; }
+
+  main {
+    padding: 24px 20px;
+    max-width: 100%;
+  }
+
+  .pict,
+  .pict2 {
+    padding: 0 20px 24px;
+  }
+
+  .foto,
+  .foto2 {
+    margin: 0 auto;
+    max-width: 180px;
+  }
 }
 
-.pict2 {
-	float:left;
-	width: 25%; /*allow for the width of the sidebar */
-	padding: 20px;
-	overflow-y: auto; /* enable scrolling if content overflows */
-}
-
-.foto2 {
-	max-width: 50%;
-   height: auto;
-   margin-top: 150px;
-}
-
-@font-face {
-  font-family: 'EB Garamond';
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/ebgaramond/v26/SlGDmQSNjdsmc35JDF1K5E55YMjF_7DPuGi-6_RkCY9_S6w.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+/* --------------------------------------------------------------------------
+   10. Print: hide navigation chrome, print content in black on white
+   -------------------------------------------------------------------------- */
+@media print {
+  body { display: block; background: #fff; }
+  nav, .skip-link { display: none; }
+  main { max-width: 100%; padding: 0; }
+  a { color: #000; text-decoration: underline; }
 }
