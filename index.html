@@ -1,73 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Nicolas Bitar's Webpage</title>
-	<link rel="stylesheet" href="styles.css">
-	<link rel="shortcut icon" href="https://nbitarv.github.io/webpage/favi.png" type="image/x-icon">
-  	<link rel="icon" href="https://nbitarv.github.io/webpage/favi.png" type="image/x-icon">
-  	<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0"></script>
-	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <!-- Makes the page render correctly on phones/tablets -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Short description shown by search engines -->
+  <meta name="description" content="Nicolás Bitar — post-doc at LAMFA, Université de Picardie Jules-Verne. Symbolic dynamics, group theory, computability theory and tiling problems.">
+  <meta name="author" content="Nicolás Bitar">
+
+  <title>Nicolás Bitar — Home</title>
+
+  <!-- Favicon (relative path so it works locally and online) -->
+  <link rel="icon" href="favi.png" type="image/png">
+
+  <!-- EB Garamond, loaded from Google Fonts with the full Latin character
+       set (the old @font-face only covered Cyrillic, so the font never
+       actually applied). display=swap avoids invisible text while loading. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- MathJax 3 for LaTeX rendering: \( ... \) inline math -->
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
+
 <body>
-	<header>
-		<br>
-	</header>
-	<nav>
-		<h2>Nicolás Bitar</h2>
-		<h5>LAMFA, Université de Picardie Jules-Verne</h5>
-    <h6>nicolas.bitar (at) u-picardie.fr</h6>
-    <br>
-		<ul>
-			<li class="current"><a href="index.html">Home</a></li>
-			<li><a href="research.html">Research</a></li>
-			<li><a href="talks.html">Talks & Conferences</a></li>
-			<li><a href="teaching.html">Teaching</a></li>
-			<li><a href="misc.html">Miscellaneous</a></li>
-		</ul>
-	</nav>
-	<main>
-	<p>
-        I am a post-doc of the <a href="https://izes.math.cnrs.fr/">ANR IZES</a> at the <a href="https://www.lamfa.u-picardie.fr/SymPA", target="_blank"> SymPA</a> team of the <a href="https://www.lamfa.u-picardie.fr/", target="_blank"> Laboratoire Amiénois de Mathématique Fondamentale et Appliquée (LAMFA)</a> at Université de Picardie Jules-Verne.
-	</p>
-	<p>
-	I was previously a PhD student supervised by <a href="https://www.lri.fr/~aubrun/index.html" target="_blank">Nathalie Aubrun</a>. You can find the thesis manuscript <a href="https://nbitarv.github.io/webpage/tesis.pdf" target="_blank">here</a>.
-    </p>
+  <!-- Invisible until focused with the keyboard (Tab key); lets keyboard
+       and screen-reader users jump straight past the navigation -->
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <h3>
-    	Research interests
-    </h3>
+  <!-- ======================= SIDEBAR ======================= -->
+  <nav aria-label="Main navigation">
+    <h1 class="site-name">Nicolás Bitar</h1>
+    <p class="site-affiliation">LAMFA, Université de Picardie Jules-Verne</p>
+    <p class="site-email">nicolas.bitar (at) u-picardie.fr</p>
+
+    <ul>
+      <!-- aria-current="page" marks the page you are on; the CSS uses it
+           to draw the dark-blue "current" pill. On each page, move this
+           attribute to the matching link. -->
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="talks.html">Talks &amp; Conferences</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="misc.html">Miscellaneous</a></li>
+    </ul>
+  </nav>
+
+  <!-- ======================= MAIN CONTENT ======================= -->
+  <main id="main-content">
+    <p>
+      I am a post-doc of the
+      <a href="https://izes.math.cnrs.fr/" target="_blank" rel="noopener noreferrer">ANR IZES</a>
+      at the
+      <a href="https://www.lamfa.u-picardie.fr/SymPA" target="_blank" rel="noopener noreferrer">SymPA</a>
+      team of the
+      <a href="https://www.lamfa.u-picardie.fr/" target="_blank" rel="noopener noreferrer">Laboratoire
+      Amiénois de Mathématique Fondamentale et Appliquée (LAMFA)</a>
+      at Université de Picardie Jules-Verne.
+    </p>
 
     <p>
-        I am interested in symbolic dynamics, combinatorial and geometric group theory, computability theory, self-avoiding walks and computational complexity. 
-
-        My research focuses on the connections between symbolic dynamics, group theory, and computability theory. In particular, to understand the behavioral dichotomy that exists between subshifts defined over \(\mathbb{Z}\) and \(\mathbb{Z}^d\) for \(d\geq 2\), evidenced by many results on their computational and dynamical behavior. The aim of my research so far has been to determine which underlying properties of these groups are responsible for this dichotomy. This research has followed two main lines:
-        <ol>
-          <li><h4>Dynamical properties of \(G\)-shifts</h4>
-            The goal is to understand how different group properties constrain the dynamical properties of subshifts and vice versa. For instance, what are the conditions for a group to admit aperiodic subshifts of finite type? or subshifts defined by substitutions? How does the existence of such shifts affect the structure of the group?
-          </li>
-          <li><h4>Computability of tiling problems</h4>
-            A tiling problem asks, given an input made up of a set of tiles and a set of local constraints on their placement, whether there exists a tiling of the group that satisfies a specific property. A classic example is the Domino Problem. I study how the underlying group's properties affect the tiling problems' decidability. One of the main goals is to characterize the class of groups where these problems are decidable, which is conjectured to be the class of virtually free groups.
-          </li>
-        </ol>
-
+      I was previously a PhD student supervised by
+      <a href="https://www.lri.fr/~aubrun/index.html" target="_blank" rel="noopener noreferrer">Nathalie Aubrun</a>.
+      You can find the thesis manuscript
+      <a href="tesis.pdf" target="_blank" rel="noopener noreferrer">here</a>.
     </p>
 
-    <h4>
-    	Where to find me?
-    </h4>
+    <h2>Research interests</h2>
 
     <p>
-        Bureau C103, UFR des Sciences, Université de Picardie Jules-Verne, 33 Rue St Leu 80000 Amiens
+      I am interested in symbolic dynamics, combinatorial and geometric group
+      theory, computability theory, self-avoiding walks and computational
+      complexity.
     </p>
 
-    <a href="https://arxiv.org/a/bitar_n_1.html", target="_blank">arXiv</a> | <a href="https://scholar.google.com/citations?user=GeT8k2EAAAAJ&hl=en&oi=ao", target="_blank">Google Scholar</a> |  <a href="https://nbitarv.github.io/webpage/CV.pdf", target="_blank">CV</a> <small>(last update January 2026)</small>
+    <p>
+      My research focuses on the connections between symbolic dynamics, group
+      theory, and computability theory. In particular, to understand the
+      behavioral dichotomy that exists between subshifts defined over
+      \(\mathbb{Z}\) and \(\mathbb{Z}^d\) for \(d\geq 2\), evidenced by many
+      results on their computational and dynamical behavior. The aim of my
+      research so far has been to determine which underlying properties of
+      these groups are responsible for this dichotomy. This research has
+      followed two main lines:
+    </p>
 
-    <br>
+    <!-- The list now sits *next to* the paragraph rather than inside it
+         (an <ol> inside a <p> is invalid HTML) -->
+    <ol>
+      <li>
+        <h3>Dynamical properties of \(G\)-shifts</h3>
+        <p>
+          The goal is to understand how different group properties constrain
+          the dynamical properties of subshifts and vice versa. For instance,
+          what are the conditions for a group to admit aperiodic subshifts of
+          finite type? or subshifts defined by substitutions? How does the
+          existence of such shifts affect the structure of the group?
+        </p>
+      </li>
+      <li>
+        <h3>Computability of tiling problems</h3>
+        <p>
+          A tiling problem asks, given an input made up of a set of tiles and
+          a set of local constraints on their placement, whether there exists
+          a tiling of the group that satisfies a specific property. A classic
+          example is the Domino Problem. I study how the underlying group's
+          properties affect the tiling problems' decidability. One of the
+          main goals is to characterize the class of groups where these
+          problems are decidable, which is conjectured to be the class of
+          virtually free groups.
+        </p>
+      </li>
+    </ol>
+
+    <h3>Where to find me?</h3>
+
+    <p>
+      Bureau C103, UFR des Sciences, Université de Picardie Jules-Verne,
+      33 Rue St Leu, 80000 Amiens
+    </p>
+
+    <p>
+      <a href="https://arxiv.org/a/bitar_n_1.html" target="_blank" rel="noopener noreferrer">arXiv</a> |
+      <a href="https://scholar.google.com/citations?user=GeT8k2EAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener noreferrer">Google Scholar</a> |
+      <a href="CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+      <small>(last update January 2026)</small>
+    </p>
   </main>
-  <div class="pict">
-          <img class="foto" style="border-radius: 3%" src="headshot.jpg"> 
-  </div>
-      
 
+  <!-- ======================= PHOTO COLUMN ======================= -->
+  <div class="pict">
+    <img class="foto" src="headshot.jpg" alt="Portrait photo of Nicolás Bitar"
+         width="1200" height="1600">
+  </div>
 </body>
+</html>
