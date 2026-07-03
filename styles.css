@@ -1,7 +1,11 @@
 /* ==========================================================================
    Nicolás Bitar — academic webpage stylesheet
    ========================================================================== */
+
 /* --------------------------------------------------------------------------
+   1. Design tokens
+   All colors and shared values live here. To re-theme the whole site,
+   change these variables only.
    -------------------------------------------------------------------------- */
 :root {
   --color-bg:          #E6F2FF; /* pale blue  — page background            */
@@ -227,6 +231,12 @@ small { font-size: 0.8em; }
   font-weight: bold;
 }
 
+/* Publication lists (research.html): space between entries, replacing the
+   manual <br> tags of the old page */
+.articulos > li {
+  margin-bottom: 1.25em;
+}
+
 .pdf {
   display: inline-block;
   padding: 0;
@@ -254,6 +264,34 @@ details.abstract summary {
 details.abstract > p {
   margin: 0.4em 0 0;
   padding-left: 18px;
+}
+
+/* Info tables inside the Teaching page's <details> panels */
+.info-table {
+  margin: 0.4em 0 0 18px;
+  border-collapse: collapse;
+}
+
+.info-table th {
+  text-align: left;
+  vertical-align: top;
+  padding: 2px 12px 2px 0;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.info-table td {
+  vertical-align: top;
+  padding: 2px 0;
+}
+
+/* Embedded Google Sheet on the Talks page: fills the column, scales down */
+.talks-sheet {
+  display: block;
+  width: 100%;
+  height: 600px;
+  border: none;
+  background: #fff;
 }
 
 /* (b) legacy collapsible (old markup + JS keeps working) */
