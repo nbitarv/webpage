@@ -30,22 +30,7 @@ nav: home
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- ======================= SIDEBAR ======================= -->
-  <nav aria-label="Main navigation">
-    <h1 class="site-name">Nicolás Bitar</h1>
-    <p class="site-affiliation">IRIF, Université Paris Cité</p>
-    <p class="site-email">nicolas.bitar (at) irif.fr</p>
-
-    <ul>
-      <!-- aria-current="page" marks the page you are on; the CSS uses it
-           to draw the dark-blue "current" pill. On each page, move this
-           attribute to the matching link. -->
-      <li><a href="index.html" aria-current="page">Home</a></li>
-      <li><a href="research.html">Research</a></li>
-      <li><a href="talks.html">Talks &amp; Conferences</a></li>
-      <li><a href="teaching.html">Teaching</a></li>
-      <li><a href="misc.html">Miscellaneous</a></li>
-    </ul>
-  </nav>
+  {% include sidebar.html %}
 
   <!-- ======================= MAIN CONTENT ======================= -->
   <main id="main-content">
