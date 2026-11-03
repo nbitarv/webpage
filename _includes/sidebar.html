@@ -1,0 +1,13 @@
+<nav aria-label="Main navigation">
+  <h1 class="site-name">{{ site.name }}</h1>
+  <p class="site-affiliation">{{ site.affiliation }}</p>
+  <p class="site-email">{{ site.email }}</p>
+
+  <ul>
+    <li><a href="index.html"{% if page.nav == "home" %} aria-current="page"{% endif %}>Home</a></li>
+    <li><a href="research.html"{% if page.nav == "research" %} aria-current="page"{% endif %}>Research</a></li>
+    <li><a href="talks.html"{% if page.nav == "talks" %} aria-current="page"{% endif %}>Talks &amp; Conferences</a></li>
+    <li><a href="teaching.html"{% if page.nav == "teaching" %} aria-current="page"{% endif %}>Teaching</a></li>
+    <li><a href="misc.html"{% if page.nav == "misc" %} aria-current="page"{% endif %}>Miscellaneous</a></li>
+  </ul>
+</nav>
